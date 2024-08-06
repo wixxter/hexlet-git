@@ -1,5 +1,6 @@
 {
     "require": {
-        "illuminate/collections": "^10.48"
+        "illuminate/collections": "^10.48",
+        "funct/funct": "^1.5"
     }
 }

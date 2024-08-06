@@ -1,6 +1,14 @@
 <?php
 
+require_once "../vendor/autoload.php";
 
-require __DIR__ . '/src/Runner.php';
 
-var_dump(run());
+
+
+$x = [[0, 1, 2], [99]];
+
+
+print_r(\Funct\Collection\last($x));
+
+
+
