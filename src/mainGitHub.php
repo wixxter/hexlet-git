@@ -15,7 +15,7 @@ $xx = 'sum';
 //print_r(FC\flattenAll($x));
 //echo FS\camelize('data data')."\n";
 
-
+//====================================================
 function sum($a, $b)
 {
     // Определяем анонимную функцию
@@ -33,7 +33,7 @@ $f1 = fn($v, $w) => $v + $w;
 
 //print_r($f1(1, 4)); // 5
 
-
+//====================================================
 // The function doesn't need to be assigned to a variable. This is valid too:
 $output = array_filter(array(1, 2, 3, 4, 5, 6), function($item) {
     return ($item % 2) == 0;
@@ -42,6 +42,7 @@ $output = array_filter(array(1, 2, 3, 4, 5, 6), function($item) {
 //print_r([...$output]);
 //print_r($output);
 
+//====================================================
 function call(string $fn, $argument)
 {
     return $fn($argument);
@@ -49,23 +50,23 @@ function call(string $fn, $argument)
 
 //$result = call('strlen', 'haskell is power!');
 //print_r($result); // => 17
+//====================================================
 
+$usersAge = [
+    ['name' => 'Igor', 'age' => 19],
+    ['name' => 'Danil', 'age' => 1],
+    ['name' => 'Vovan', 'age' => 4],
+    ['name' => 'Matvey', 'age' => 4],
+];
 
-//$users1 = [
-//    ['name' => 'Igor', 'age' => 19],
-//    ['name' => 'Danil', 'age' => 1],
-//    ['name' => 'Vovan', 'age' => 4],
-//    ['name' => 'Matvey', 'age' => 16],
-//];
-//
 //$cmp = fn($a, $b) => $a['age'] <=> $b['age'];
-//
-//usort($users1, $cmp);
-//
-//print_r([...$users1]);
 
+//usort($usersAge, $cmp);
 
-$users = [
+//print_r([...$usersAge]);
+
+//====================================================
+$usersBirthday = [
     ['name' => 'Rob', 'birthday' => '1975-01-11'],
     ['name' => 'Tirion', 'birthday' => '1988-11-19'],
     ['name' => 'Tisha', 'birthday' => '1992-02-27'],
@@ -80,4 +81,11 @@ function takeOldest($arr, $val = 1)
     return (FC\firstN($arr, $val));
 }
 
-print_r(takeOldest($users, 5));
+//print_r(takeOldest($usersBirthday, 5));
+//====================================================
+
+$users = array_reduce($usersAge, function ($acc, $user) {
+    $acc[$user['age']][] = $user['name'];
+    return $acc;
+}, []);
+print_r($users);
